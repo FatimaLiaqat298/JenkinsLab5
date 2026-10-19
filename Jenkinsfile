@@ -14,16 +14,15 @@ pipeline {
                 echo 'Installing PHP and Composer dependencies...'
                 sh 'composer install --no-interaction --prefer-dist --optimize-autoloader'
                 
-                echo 'Installing frontend assets...'
-                sh 'npm install'
-                sh 'npm run build'
+                echo 'Bypassing npm asset build (Blade templates only)...'
+                // sh 'npm install'
+                // sh 'npm run build'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running application tests...'
-                // Agar aapke paas unit tests hain toh yeh run honge
                 sh 'php artisan test'
             }
         }
