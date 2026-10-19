@@ -20,6 +20,18 @@ pipeline {
             }
         }
 
+        stage('Setup Environment & App Key') {
+            steps {
+                echo 'Setting up .env and generating Application Key...'
+                sh '''
+                    if [ ! -f .env ]; then
+                        cp .env.example .env
+                        php artisan key:generate
+                    fi
+                '''
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 echo 'Running application tests...'
@@ -29,13 +41,7 @@ pipeline {
 
         stage('Database Migration') {
             steps {
-                echo 'Setting up environment and running database migrations...'
-                sh '''
-                    if [ ! -f .env ]; then
-                        cp .env.example .env
-                        php artisan key:generate
-                    fi
-                '''
+                echo 'Running database migrations...'
                 sh 'php artisan migrate --force'
             }
         }
