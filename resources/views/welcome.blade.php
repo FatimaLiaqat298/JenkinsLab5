@@ -48,7 +48,7 @@
 </head>
 <body>
     <div class="card">
-        <h1>Updated Fatima's Application - Version 2.0</h1>
+        <h1>Updated Fatima's Application - Version 3.0</h1>
         <p>Yeh page local environment se update hua hai aur **Jenkins CI/CD Pipeline** ke zariye automatically test aur deploy ho kar live aaya hai!</p>
         <div class="badge">Status: Live & Auto-Deployed</div>
     </div>
